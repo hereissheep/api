@@ -4,52 +4,27 @@
  * @description :: Server-side logic for managing users
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
-
+var passport = require('passport');
 module.exports = {
 
-	login: function(req, res) {
-    var bcrypt = require('bcrypt');
+    login: function (req, res) {
+        passport.authenticate('local', function (err, user, info) {
 
-    User.findOneByEmail(req.body.email)
-        .done(function(err, user) {
-          if (err) {
-          	res.json({
-              error: 'DB error'
-            }, 500);
-          }
+            req.logIn(user, function (err) {
+                if (err) {
+                    return res.json("There was a problem with your authentication");
+                }
 
-          if (!user) {
-            res.json({
-              error: 'User not found'
-            }, 404);
-          }
+                return res.json(user);
+            });
+        })(req, res);
+    },
 
-          bcrypt.compare(req.body.password, user.password, function(err, match) {
-              if (err) {
-                res.json({
-                  error: 'Server error'
-                }, 500);
-              }
+    logout: function (req, res) {
+        req.logout();
+        res.send("Successfully logged out");
+    }
 
-              if (match) {
-                // password match
-                req.session.user = user.id;
-                res.json(user);
-              } else {
-                // invalid password
-                if (req.session.user) req.session.user = null;
-                res.json({
-                  error: 'Invalid password'
-                }, 400);
-              }
-          });
-    });
-  },
-
-  logout: function(req, res) {
-    req.session.user = null;
-    res.send("Successfully logged out");
-  }
 
 };
 
