@@ -1,15 +1,20 @@
 /**
-* Users.js
+* User.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
 */
 
 module.exports = {
-
   attributes: {
-	email: {
-      type: 'string',
+    firstName: {
+      type: 'string'
+    },
+    lastName: {
+      type: 'string'
+    },
+    email: {
+      type: 'email',
       unique: true,
       required: true
     },
@@ -17,6 +22,16 @@ module.exports = {
       type: 'string',
       required: true,
       minLength: 6
+    },
+	  provider: {
+      type: 'string'
+	  },
+	  provider_id:{
+      type: 'string'
+	  },
+    products:{
+      collection: "product",
+      via: "user"
     }
   },
 
