@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Product.js
  *
@@ -6,6 +8,7 @@
  */
 
 module.exports = {
+
     schema: true,
 
     attributes: {

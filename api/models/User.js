@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * User.js
  *
@@ -6,14 +8,17 @@
  */
 
 module.exports = {
+
     schema: true,
 
     attributes: {
         firstName: {
-            type: 'string'
+            type: 'string',
+            required: true
         },
         lastName: {
-            type: 'string'
+            type: 'string',
+            required: true
         },
         email: {
             type: 'email',
@@ -22,14 +27,17 @@ module.exports = {
         },
         password: {
             type: 'string',
-            required: true,
-            minLength: 6
+            minLength: 6,
+            required: true
+
         },
         provider: {
-            type: 'string'
+            type: 'string',
+            required: false
         },
         provider_id: {
-            type: 'string'
+            type: 'string',
+            required: false
         },
         products: {
             collection: "product",

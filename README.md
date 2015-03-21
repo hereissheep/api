@@ -1,3 +1,4 @@
 # hereissheep
 
-a [Sails](http://sailsjs.org) application
+Make the world a better price
+------------------------------

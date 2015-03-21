@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * CategoriesController
  *
@@ -6,5 +8,5 @@
  */
 
 module.exports = {
-	
+
 };

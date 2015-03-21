@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * ProductsController
  *
@@ -6,6 +8,6 @@
  */
 
 module.exports = {
-	
+
 };
 
